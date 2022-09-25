@@ -1,0 +1,467 @@
+local lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/Deedaoz/Bluecandy/main/New%20Text%20Document%20(2).lua"))();
+
+lib:SetTitle("Bluecandy 02") -- name <string>
+
+local tab1 = lib:NewTab("Character", "Placeholder") -- name <string> description <string>
+local tab2 = lib:NewTab("Misc", "Random shit") -- name <string> description <string>
+local tab3 = lib:NewTab("Effects", "Effects cast on yourself!") -- name <string> description <string>
+local tab4 = lib:NewTab("Lightsaber", "Lightsaber effects!") -- name <string> description <string>
+local tab5 = lib:NewTab("Combat", "Combat based scripts!") -- name <string> description <string>
+local tab6 = lib:NewTab("Teleports", "Teleport Locations!!") -- name <string> description <string>
+local tab7 = lib:NewTab("Hubs", "Any useful hubs!") -- name <string> description <string>
+
+tab1:NewSlider("WalkSpeed",16,500,16,function(value) -- name <string> minimum <number> maximium <number> default <number> callback <function>
+   game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = value
+end)
+tab1:NewButton("Change WalkSpeed to 50",function()-- name <string> callback <function>
+   game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 50
+end)
+
+tab2:NewButton("Shiftlock",16,500,16,function(value)
+    local music3 = game:GetService("StarterGui").forcePowers.equip
+    music3:play()
+   
+    game:GetService('Players').LocalPlayer.DevEnableMouseLock = true
+end)
+
+tab2:NewButton("Debug Zoom",function()
+    local music3 = game:GetService("StarterGui").forcePowers.equip
+    music3:play()
+    
+    local player = game.Players.LocalPlayer
+ 
+player.CameraMaxZoomDistance = 6000
+player.CameraMinZoomDistance = 0
+end)
+
+tab3:NewButton("Invisible",function()
+    local music3 = game:GetService("StarterGui").forcePowers.equip
+    music3:play()
+
+    local LP = game.Players.LocalPlayer
+    local Character = LP.Character
+    if LP.Character.Humanoid.RigType == Enum.HumanoidRigType.R6 then
+        local Clone = Character.HumanoidRootPart:Clone()
+        Character.HumanoidRootPart:Destroy()
+        Clone.Parent = Character
+    else
+        local Clone = Character.LowerTorso.Root:Clone()
+        Character.LowerTorso.Root:Destroy()
+        Clone.Parent = Character.LowerTorso
+    end
+end)
+
+tab3:NewButton("Autoheal",function()
+    local music3 = game:GetService("StarterGui").forcePowers.equip
+		music3:play()
+    while wait() do
+        local A_1 = true
+        local Event = game:GetService("ReplicatedStorage").Events.toggleHealing
+        Event:FireServer(A_1)
+    end
+end)
+
+
+tab3:NewButton("Inf Stamina/Force",function()
+    local music3 = game:GetService("StarterGui").forcePowers.equip
+		music3:play()
+		local RunService = game:GetService("RunService")
+		RunService.Heartbeat:Connect(function()
+			local plr = game.Players.LocalPlayer
+			local chr = plr.Character
+			local env1 = getsenv(plr.Backpack.Force.Client)
+			env1.forceLevel = math.huge
+		end)
+		RunService.Heartbeat:Connect(function()
+			local plr = game.Players.LocalPlayer
+			local chr = plr.Character
+			local env = getsenv(chr.Lightsaber.Client)
+			env.stamina = math.huge
+		end)
+    end)
+
+    tab3:NewButton("Anti-Freeze",function()
+        local music3 = game:GetService("StarterGui").forcePowers.equip
+
+		music3:Play()
+		for i,v in pairs(game:GetDescendants()) do
+			v.ChildRemoved:Connect(function(e)
+			end)
+		end
+
+		local function bruh()
+			local AnimationTracks = game.Players.LocalPlayer.Character.Humanoid:GetPlayingAnimationTracks()
+
+			for i, track in pairs (AnimationTracks) do
+				track:Stop()
+			end    
+		end
+		local plrs = game.Players.LocalPlayer.Character
+		spawn(function()
+			for i,v in pairs(plrs:GetDescendants()) do
+				v.ChildAdded:Connect(function(e)
+					if e.Name == "forceFreezeEffect" or e.Name == "FakeBPVelocity" then
+						wait(0.001)
+						local toolname =  "Lightsaber"
+						game.Players.LocalPlayer.Backpack:FindFirstChild(toolname).Parent = game.Players.LocalPlayer.Character
+						game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("forceFreezeEffect"):Destroy()
+						game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("FakeBPVelocity"):Destroy()
+						game.Workspace.Camera.ColorCorrection:Destroy()
+						game.Players.LocalPlayer.Character.HumanoidRootPart.forceFreeze:Stop()
+						game.Players.LocalPlayer.Character.localForceEffects.vignette:Destroy()
+						game.Players.LocalPlayer.Character.localForceEffects:Destroy()
+						for i,v in pairs(game.Players.LocalPlayer.PlayerGui:GetChildren()) do
+							if v.Name == "vignette" then
+								v:Destroy()
+							end
+							if v:IsA("Sound") then v:Destroy() end    
+						end
+						game.Players.LocalPlayer.Character.Humanoid.PlatformStand = false
+						game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16
+						bruh()
+					end
+				end)
+			end
+		end)
+    end)
+
+  
+
+
+
+    tab2:NewButton("Reveal Chat",function()
+    local music3 = game:GetService("StarterGui").forcePowers.equip
+    music3:play()
+
+    --This script reveals ALL hidden messages in the default chat
+--chat "/e spy" to toggle!
+enabled = true
+--if true will check your messages too
+spyOnMyself = true
+--if true will chat the logs publicly (fun, risky)
+public = false
+--if true will use /me to stand out
+publicItalics = false
+--customize private logs
+privateProperties = {
+	Color = Color3.fromRGB(0,255,255); 
+	Font = Enum.Font.SourceSansBold;
+	TextSize = 18;
+}
+--////////////////////////////////////////////////////////////////
+local StarterGui = game:GetService("StarterGui")
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer or Players:GetPropertyChangedSignal("LocalPlayer"):Wait() or Players.LocalPlayer
+local saymsg = game:GetService("ReplicatedStorage"):WaitForChild("DefaultChatSystemChatEvents"):WaitForChild("SayMessageRequest")
+local getmsg = game:GetService("ReplicatedStorage"):WaitForChild("DefaultChatSystemChatEvents"):WaitForChild("OnMessageDoneFiltering")
+local instance = (_G.chatSpyInstance or 0) + 1
+_G.chatSpyInstance = instance
+
+local function onChatted(p,msg)
+	if _G.chatSpyInstance == instance then
+		if p==player and msg:lower():sub(1,6)=="/e spy" then
+			enabled = not enabled
+			wait(0.3)
+			privateProperties.Text = "{SPY "..(enabled and "EN" or "DIS").."ABLED}"
+			StarterGui:SetCore("ChatMakeSystemMessage",privateProperties)
+		elseif enabled and (spyOnMyself==true or p~=player) then
+			msg = msg:gsub("[\n\r]",''):gsub("\t",' '):gsub("[ ]+",' ')
+			local hidden = true
+			local conn = getmsg.OnClientEvent:Connect(function(packet,channel)
+				if packet.SpeakerUserId==p.UserId and packet.Message==msg:sub(#msg-#packet.Message+1) and (channel=="All" or (channel=="Team" and public==false and p.Team==player.Team)) then
+					hidden = false
+				end
+			end)
+			wait(1)
+			conn:Disconnect()
+			if hidden and enabled then
+				if public then
+					saymsg:FireServer((publicItalics and "/me " or '').."{SPY} [".. p.Name .."]: "..msg,"All")
+				else
+					privateProperties.Text = "{SPY} [".. p.Name .."]: "..msg
+					StarterGui:SetCore("ChatMakeSystemMessage",privateProperties)
+				end
+			end
+		end
+	end
+end
+
+for _,p in ipairs(Players:GetPlayers()) do
+	p.Chatted:Connect(function(msg) onChatted(p,msg) end)
+end
+Players.PlayerAdded:Connect(function(p)
+	p.Chatted:Connect(function(msg) onChatted(p,msg) end)
+end)
+privateProperties.Text = "{SPY "..(enabled and "EN" or "DIS").."ABLED}"
+player:WaitForChild("PlayerGui"):WaitForChild("Chat")
+StarterGui:SetCore("ChatMakeSystemMessage",privateProperties)
+wait(3)
+local chatFrame = player.PlayerGui.Chat.Frame
+chatFrame.ChatChannelParentFrame.Visible = true
+chatFrame.ChatBarParentFrame.Position = chatFrame.ChatChannelParentFrame.Position+UDim2.new(UDim.new(),chatFrame.ChatChannelParentFrame.Size.Y)
+end)
+
+
+tab4:NewButton("Unlock Forms",function()
+    local music3 = game:GetService("StarterGui").forcePowers.equip
+    music3:play()
+
+    local plr = game.Players.LocalPlayer
+
+		if plr.Backpack:FindFirstChild("Lightsaber") then
+			plr.Backpack.Lightsaber.Assets.Animations.shien.Name = "Form6"
+			plr.Backpack.Lightsaber.Assets.Animations.vaapad.Name = "Form7"
+		else
+			plr.Character.Lightsaber.Assets.Animations.shien.Name = "Form6"
+			plr.Character.Lightsaber.Assets.Animations.vaapad.Name = "Form7"
+		end
+
+		plr.CharacterAdded:Connect(function()
+			wait()
+			plr.Backpack.Lightsaber.Assets.Animations.shien.Name = "Form6"
+			plr.Backpack.Lightsaber.Assets.Animations.vaapad.Name = "Form7"
+		end)
+    end)
+
+
+
+tab4:NewButton("Disco Saber",function()
+    local music3 = game:GetService("StarterGui").forcePowers.equip
+    music3:play()
+
+    local ColorTable = {
+        "red",
+        "orange",
+        "yellow",
+        "purple",
+        "pink",
+        "green",
+        "white",
+        "cyan",
+        "veridian",
+        "blue",
+        "darkBlue"
+    };
+    _G.Enabled = true
+
+    while wait(0) and _G.Enabled do
+        for i, v in pairs(ColorTable) do
+            wait(0.1)
+            local ohString1 = v;
+            if game.Players.LocalPlayer.Character:FindFirstChild("Lightsaber") then
+                game.Players.LocalPlayer.Character:FindFirstChild("Lightsaber").Assets.Events.colorSaber:FireServer(ohString1);
+            end;
+        end;
+    end;
+end)
+
+tab4:NewButton("Holosaber",function()
+    local music3 = game:GetService("StarterGui").forcePowers.equip
+    music3:play()
+
+    local plr = game:GetService("Players").LocalPlayer
+    plr.Character.Handle.beamInner:Destroy()
+    plr.Character.Handle.trailOuter:Destroy()
+    plr.Character.Handle.trailInner:Destroy()
+end)
+
+
+
+tab4:NewButton("All Forms Spin",function()
+    local music3 = game:GetService("StarterGui").forcePowers.equip
+    music3:play()
+    local number = 1
+
+while wait() do
+    if number == 1 then
+        print("Running Code")
+        local args = {
+    [1] = 7
+}
+
+game:GetService("Players").LocalPlayer.Character.Lightsaber.Assets.Events.setForm:FireServer(unpack(args))
+    end
+end 
+end)
+
+
+tab5:NewButton("Autoparry (M)",function()
+    local music3 = game:GetService("StarterGui").forcePowers.equip
+    music3:play()
+
+    game.StarterGui:SetCore("SendNotification", {Title = "Autoparry", Text = "Bind M"})
+    local cooldown = {}
+    local autoparry = false
+    local UIS = game:GetService("UserInputService")
+
+    game.Players.LocalPlayer:GetMouse().KeyDown:Connect(function(key)
+        if key == "m" then
+            autoparry = not autoparry
+            game.StarterGui:SetCore("SendNotification", {
+                Title = "Autoparry toggled";
+                Text = tostring(autoparry)
+            })
+        end
+    end)
+    local RunService = game:GetService("RunService")
+    RunService.Heartbeat:Connect(function()
+        if autoparry == false then return end
+        local plr = game.Players.LocalPlayer
+        local chr = plr.Character
+        if not chr then return end
+        if not chr:FindFirstChildOfClass("Tool") then return end
+        local enemy = chr:FindFirstChildOfClass("Tool").combatData.Target.Value
+        if not enemy then return end
+        if not enemy:FindFirstChildOfClass("Tool").combatData.Attacking.Value then return end
+        if cooldown[enemy] then return end
+        cooldown[enemy] = true
+        wait(0.2)
+        chr:FindFirstChildOfClass("Tool").Assets.Events.attackStart:FireServer(enemy:FindFirstChildOfClass("Tool").combatData.Stance.Value,false)
+        wait()
+        chr:FindFirstChildOfClass("Tool").Assets.Events.cancelAttack:FireServer()
+        wait(1)
+        cooldown[enemy] = nil
+    end)
+end)
+
+tab5:NewButton("Autoblock (U)",function()
+    local music3 = game:GetService("StarterGui").forcePowers.equip
+    music3:play()
+
+    	--autoblock
+	game.StarterGui:SetCore("SendNotification", {Title = "Autoblock", Text = "Bind U"})
+    local cooldown = {}
+    local Autoblock = false
+    local UIS = game:GetService("UserInputService")
+
+    UIS.InputBegan:Connect(function(input, x)
+        if x then return end
+        if input.KeyCode == Enum.KeyCode.U then
+            Autoblock = not Autoblock
+            game.StarterGui:SetCore("SendNotification", {
+                Title = "Autoblock toggled";
+                Text = tostring(Autoblock)
+            })
+        end
+    end)
+
+    local RunService = game:GetService("RunService")
+    RunService.Heartbeat:Connect(function()
+        if Autoblock == false then return end
+        local plr = game:GetService("Players").LocalPlayer
+        local chr = plr.Character
+        if not chr:FindFirstChildOfClass("Tool") then return end
+        local enemy = chr:FindFirstChildOfClass("Tool").combatData.Target.Value
+        if not enemy then return end
+        if not enemy:FindFirstChildOfClass("Tool") then return end
+        local A_1 = enemy:FindFirstChildOfClass("Tool").combatData.Stance.Value
+        local A_2 = false
+        local Event = chr:FindFirstChildOfClass("Tool").Assets.Events.updateStance
+        if not enemy:FindFirstChildOfClass("Tool").combatData.Attacking.Value then return end
+        cooldown[enemy] = nil
+        Event:FireServer(A_1, A_2)
+        wait(0.005)
+        Event:FireServer(A_1, A_2)
+        wait(0.005)
+        Event:FireServer(A_1, A_2)
+    end)
+end)
+
+
+tab5:NewButton("360 bar",function()
+    local music3 = game:GetService("StarterGui").forcePowers.equip
+    music3:play()
+
+    local mouse = game:GetService("Players").LocalPlayer:GetMouse()
+		getsenv(game:GetService("Players").LocalPlayer.Character:FindFirstChildWhichIsA("Tool").Client).getStance = function()
+
+			local v71 = getsenv(game:GetService("Players").LocalPlayer.Character.Lightsaber.Client).stance;
+			if not getsenv(game:GetService("Players").LocalPlayer.Character.Lightsaber.Client).isStanceLocked() then
+
+				local v72 = Vector2.new(-1,0);
+				local v73 = 2 * Vector2.new(mouse.X / mouse.ViewSizeX, 1 - mouse.Y / mouse.ViewSizeY) - Vector2.new(1, 1);
+				local l__unit__74 = Vector2.new(v73.X, math.max(v73.Y, 0)).unit;
+				local centVector = Vector2.new(workspace.CurrentCamera.ViewportSize.X / 2, workspace.CurrentCamera.ViewportSize.Y / 2  - (game:GetService("GuiService"):GetGuiInset().Y/2))
+				v71 = math.deg(math.atan2(mouse.y - centVector.y, mouse.x - centVector.X));
+			end;
+			local Marker = 180 * ((v71 + 160) / 120)
+
+			return Marker 
+		end
+    end)
+
+
+tab5:NewButton("Underhit (F)",function()
+    local music3 = game:GetService("StarterGui").forcePowers.equip
+    music3:play()
+    local player = game.Players.LocalPlayer
+		local plr = game:GetService("Players").LocalPlayer
+		local mouse = player:GetMouse()
+		local A_1 = -180    
+		local A_2 = false
+		local cdw = false
+		local Event = plr.Character.Lightsaber.Assets.Events.attackStart
+
+		bind = "f" 
+
+
+		mouse.KeyDown:connect(function(key)
+			if not Event then 
+				return
+			end
+			if key == bind then
+				Event:FireServer(A_1, A_2)
+			end
+		end)
+    end)
+
+    tab5:NewButton("Choke team",function()
+        local music3 = game:GetService("StarterGui").forcePowers.equip
+        music3:play()
+        local plr = game.Players.LocalPlayer
+		local chr = plr.Character
+
+
+		local env = getsenv(plr.Backpack.Force.Client)
+		hookfunction(env.diffTeam, function()
+			return true
+		end)
+    end)
+
+    local function teleport(x,y,z)
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(x,y,z)
+	end
+
+    tab6:NewButton("The Mountain",function()
+        local music3 = game:GetService("StarterGui").forcePowers.equip
+        music3:play()
+
+        teleport(-848, 76, 423)
+    end)
+
+    
+    tab6:NewButton("Sith Bridge",function()
+        local music3 = game:GetService("StarterGui").forcePowers.equip
+        music3:play()
+        teleport(488,184,-185)
+    end)
+
+    tab6:NewButton("Jedi Base",function()
+        local music3 = game:GetService("StarterGui").forcePowers.equip
+        music3:play()       
+        teleport(-434,58,-387)
+    end)
+
+    tab7:NewButton("Infinite Yield",function()
+        local music3 = game:GetService("StarterGui").forcePowers.equip
+        music3:play()  
+        loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
+    end)
+
+
+    
+
+        
+            
+
+
