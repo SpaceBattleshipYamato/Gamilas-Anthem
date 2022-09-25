@@ -1,0 +1,226 @@
+--> Ui
+local library = loadstring(game:HttpGet("https://symmetricalhubofficial.000webhostapp.com/UwuWare.lua", true))()
+
+getgenv().theme = Color3.fromRGB(100,149,237) --custom UI colors if you want
+
+local tab3 = library:CreateWindow("Cosmetic")
+local tab2 = library:CreateWindow("Beams")
+local tab1 = library:CreateWindow("Combat")
+local function pulse()
+	local args = {
+		[1] = "ChargingSB",
+		[2] = game:GetService("Players").LocalPlayer.Character
+	}
+
+	game:GetService("ReplicatedStorage").Remotes.Melee:FireServer(unpack(args))
+
+end
+local function aura()
+	local args = {
+		[1] = game:GetService("Players").LocalPlayer.Character,
+		[2] = "End",
+		[3] = game:GetService("Players").LocalPlayer.Character.Values
+	}
+
+	game:GetService("Players").LocalPlayer.Character.Combat.Main:FindFirstChild("Ki Charge").Event:FireServer(unpack(args))
+
+end
+local mouse=game.Players.LocalPlayer:GetMouse()
+tab3:AddButton({text="(V) Aura Pulse",state=false,callback=function(s)
+	mouse.KeyDown:Connect(function(key)
+		if key == "v" then
+			aura()
+			pulse()
+		end
+	end)
+end,})
+local function attack()
+	local args = {
+		[1] = "Attack",
+		[2] = game:GetService("Players").LocalPlayer.Character,
+		[3] = "Light1",
+		[4] = {
+			[1] = "Light1"
+		},
+		[5] = CFrame.new(Vector3.new(219.19314575195312, 4.666446685791016, 310.36883544921875), Vector3.new(-0.44797471165657043, -4.949385901120706e-10, 0.8940462470054626)),
+		[6] = false,
+		[7] = "Wild Child"
+	}
+
+	game:GetService("ReplicatedStorage").Remotes.Melee:FireServer(unpack(args))
+
+end
+local function chargeup()
+	local args = {
+		[1] = "Charging",
+		[2] = game:GetService("Players").LocalPlayer.Character,
+		[3] = "Blast",
+		[4] = "Wild Child",
+		[5] = {
+			[1] = "Gigantic Omegastorm"
+		}
+	}
+		game:GetService("ReplicatedStorage").Remotes.BeamSpecial:FireServer(unpack(args))
+	end
+local function solar()
+	local args = {
+		[1] = "Firing",
+		[2] = game:GetService("Players").LocalPlayer.Character,
+		[3] = "Blast",
+		[4] = "Wild Child",
+		[5] = {
+			[1] = "Gigantic Omegastorm",
+			[2] = 500
+		}
+	}
+		game:GetService("ReplicatedStorage").Remotes.BeamSpecial:FireServer(unpack(args))
+end
+local function fire()
+	local args = {
+	[1] = "Firing",
+	[2] = game:GetService("Players").LocalPlayer.Character,
+	[3] = "Blast",
+	[4] = "Wild Child",
+	[5] = {
+		[1] = "Gigantic Omegastorm",
+		[2] = 1
+		}
+	}
+
+	game:GetService("ReplicatedStorage").Remotes.BeamSpecial:FireServer(unpack(args))
+
+
+end
+	
+local function launch()
+	local args = {
+		[1] = "Other",
+		[2] = game:GetService("Players").LocalPlayer.Character,
+		[3] = "Melee",
+		[4] = "Wild Child",
+		[5] = {
+			[1] = "Dashing Punch",
+			[2] = 100
+		}
+	}
+
+	game:GetService("ReplicatedStorage").Remotes.BeamSpecial:FireServer(unpack(args))
+
+end
+local function attack()
+local args = {
+    [1] = "Attack",
+    [2] = game:GetService("Players").LocalPlayer.Character,
+    [3] = "Light1",
+    [4] = {
+        [1] = "Light1"
+    },
+    [5] = CFrame.new(Vector3.new(219.19314575195312, 4.666446685791016, 310.36883544921875), Vector3.new(-0.44797471165657043, -4.949385901120706e-10, 0.8940462470054626)),
+    [6] = false,
+    [7] = "Wild Child"
+}
+
+game:GetService("ReplicatedStorage").Remotes.Melee:FireServer(unpack(args))
+
+end
+tab1:AddButton({text="([) Super Punch",state=false,callback=function(s)
+mouse.KeyDown:connect(function(key)
+if key == "[" then
+attack()
+attack()
+attack()
+attack()
+attack()
+attack()
+attack()
+attack()
+attack()
+end
+end)
+end,})
+tab2:AddButton({text="(J/K) Charge/Fire",state=false,callback=function(s)
+	game:GetService("StarterGui"):SetCore("SendNotification",{
+		Title = "How to Use:",
+		Text = "Press J to charge, K to shoot."
+	})
+	mouse.KeyDown:Connect(function(key)
+		if key == "j" then
+			chargeup()
+		end
+		if key == "k" then
+			fire()
+		end
+	end)
+end,})
+tab2:AddButton({text="(L) Solar Beam",state=false,callback=function(s)
+	game:GetService("StarterGui"):SetCore("SendNotification",{
+		Title = "How to Use:",
+		Text = "Charge up beam and use L for a massive beam."
+	})
+	mouse.KeyDown:connect(function(key)
+	    if key == "l" then
+	        solar()
+	    end
+	end)
+end,})
+tab1:AddButton({text="(P) Dash Attack",state=false,callback=function(s)
+	mouse.KeyDown:Connect(function(key)
+		if key == "p" then
+			launch()
+		end
+	end)
+end,})
+tab1:AddButton({text="(M) Ultra Lagstinct",state=false,callback=function(s)
+	mouse.KeyDown:Connect(function(key)
+		if key == "m" then
+			while true do
+				local args = {
+					[1] = "SnapVanish",
+					[2] = game:GetService("Players").LocalPlayer.Character,
+					[3] = game:GetService("Players").LocalPlayer.Character.StunFolder,
+					[4] = {
+						[1] = Vector3.new(350.570068359375, 4.587774753570557, -403.69683837890625),
+						[2] = Vector3.new(350.570068359375, 4.587774753570557, -403.69683837890625)
+					}
+				}
+
+				game:GetService("ReplicatedStorage").Remotes.Melee:FireServer(unpack(args))
+				wait(0.1)
+			end
+		end
+	end)
+end,})
+tab1:AddButton({text="(N) Ki-Blast",state=false,callback=function(s)
+	game:GetService("StarterGui"):SetCore("SendNotification",{
+		Title = "How to Use:",
+		Text = "Press B to disable"
+	})
+	mouse.KeyDown:Connect(function(key)
+		if key == "n" then
+			local args = {
+				[1] = "Other",
+				[2] = game:GetService("Players").LocalPlayer.Character,
+				[3] = "Blast",
+				[4] = "Low-Class Saiyan",
+				[5] = {
+					[1] = "Energy Blast Volley"
+				}
+			}
+
+			game:GetService("ReplicatedStorage").Remotes.BeamSpecial:FireServer(unpack(args))
+
+		end
+		if key == "b" then
+			local args = {
+				[1] = "Disrupted",
+				[2] = game:GetService("Players").LocalPlayer.Character,
+				[3] = "Blast",
+				[4] = "Low-Class Saiyan",
+				[5] = {
+					[1] = "Energy Blast Volley"
+				}
+			}
+		end
+	end)
+end,})
+library:Init()
