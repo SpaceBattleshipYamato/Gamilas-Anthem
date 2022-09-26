@@ -1,0 +1,256 @@
+local lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/Deedaoz/Bluecandy/main/New%20Text%20Document%20(2).lua"))();
+
+local tab1 = lib:NewTab("Main", " Fun and Games lmao") -- name <string> description <string>
+local tab2 = lib:NewTab("Teleportation", "Fun and Games lmao") -- name <string> description <string>
+local tab3 = lib:NewTab("Shields", "Fun and Games lmao") -- name <string> description <string>
+local tab4 = lib:NewTab("Experimental", "Fun and Games lmao") -- name <string> description <string>
+
+local plr = game.Players.LocalPlayer
+local mouse = plr:GetMouse()
+local mousepos = game.Players.LocalPlayer:GetMouse().Hit.p
+local function dmg()
+    local args = {
+        [1] = "Damage",
+        [2] = mousepos
+    }
+
+    game:GetService("Players").LocalPlayer.Character.Lantern.Event:FireServer(unpack(args))
+
+end
+local lasering = false
+
+tab4:NewToggle("Super Laser",false,function(value)
+    lasering = s
+    if s then
+        local g = game:service('RunService').Stepped:connect(function()
+            if not lasering then
+                return g:Disconnect()
+            end
+            pcall(function()
+                dmg()
+                wait(0.01)
+            end)
+        end)
+    end
+end)
+
+local function superburst()
+    local args = {
+        [1] = "Claw"
+    }
+
+    game:GetService("Players").LocalPlayer.Character:FindFirstChild("Rage Ring").ActivatedRemote:FireServer(unpack(args))
+
+end
+local mousepos2 = game.Players.LocalPlayer:GetMouse().Hit.p
+
+local function basetp()
+    local args = {
+        [1] = "Portal",
+        [2] = CFrame.new(Vector3.new(-50.526031494140625, 331.8865661621094, 193.3594512939453), Vector3.new(-0.487434983253479, -0.7436140179634094, 0.4576520621776581))
+    }
+
+    game:GetService("Players").LocalPlayer.Character:FindFirstChild("Rage Ring").ActivatedRemote:FireServer(unpack(args))
+
+end
+local function setPower()
+    local args = {
+        [1] = "UpdateRingPower",
+        [2] = 250
+    }
+
+    game:GetService("Players").LocalPlayer.Character:FindFirstChild("Rage Ring").ActivatedRemote:FireServer(unpack(args))
+
+end
+local function supermace()
+    local args = {
+        [1] = "Rage"
+    }
+
+    game:GetService("Players").LocalPlayer.Character:FindFirstChild("Rage Ring").ActivatedRemote:FireServer(unpack(args))
+
+end
+local function shield()
+    local args = {
+        [1] = "ShieldStart"
+    }
+
+    game:GetService("Players").LocalPlayer.Character:FindFirstChild("Rage Ring").ActivatedRemote:FireServer(unpack(args))
+
+end
+local function shieldoff()
+    local args = {
+        [1] = "ShieldBreak"
+    }
+
+    game:GetService("Players").LocalPlayer.Character:FindFirstChild("Rage Ring").ActivatedRemote:FireServer(unpack(args))
+
+end
+
+tab1:NewButton("Taunt",function(value)
+    local args = {
+        [1] = "Taunted"
+    }
+
+    game:GetService("Players").LocalPlayer.Character:FindFirstChild("Rage Ring").ActivatedRemote:FireServer(unpack(args))
+end)
+
+tab1:NewButton("Super Hammer",function(value)
+
+    mouse.KeyDown:Connect(function(key)
+        if key == "y" then
+            supermace()
+            supermace()
+            supermace()
+            supermace()
+            supermace()
+        end
+    end)
+end)
+
+local function burst()
+    local args = {
+        [1] = "Outburst"
+    }
+
+    game:GetService("Players").LocalPlayer.Character:FindFirstChild("Rage Ring").ActivatedRemote:FireServer(unpack(args))
+
+end
+
+
+
+tab1:NewButton("Super Bloodburst",function(value)
+    mouse.KeyDown:Connect(function(key)
+        if key == "r" then
+            burst()
+            burst()
+            burst()
+            burst()
+            burst()
+        end
+    end)
+end)
+
+tab1:NewButton("Super Beast",function(value)
+    mouse.KeyDown:Connect(function(key)
+        if key == "z" then
+            superburst()
+            superburst()
+            superburst()
+            superburst()
+        end
+    end)
+end)
+
+local function blast()
+    local mousepos55 = game.Players.LocalPlayer:GetMouse().Hit.p
+    local args = {
+        [1] = "EnergyBlast",
+        [2] = mousepos55
+    }
+
+    game:GetService("Players").LocalPlayer.Character:FindFirstChild("Rage Ring").ActivatedRemote:FireServer(unpack(args))
+
+end
+
+
+tab1:NewButton("Super Blasts",function(value)
+    mouse.KeyDown:Connect(function(key)
+        if key == "q" then
+            blast()
+            blast()
+            blast()
+            blast()
+        end
+    end)
+end)
+
+tab1:NewToggle("Machine Gun",false,function(value)
+    gunning = s
+    if s then
+        local g = game:service('RunService').Stepped:connect(function()
+            if not gunning then
+                return g:Disconnect()
+            end
+            pcall(function()
+                blast()
+                wait(3)
+            end)
+        end)
+    end
+end)
+tab1:NewButton("(P) Better Portals",function(value)
+
+    mouse.KeyDown:Connect(function(key)
+        if key == "p" then
+            local mousepos = game.Players.LocalPlayer:GetMouse().Hit.p
+            local args = {
+                [1] = "Portal",
+                [2] = CFrame.new(mousepos, Vector3.new(0.21429160237312317, -0.1463317573070526, 0.9657465219497681))
+            }
+
+            game:GetService("Players").LocalPlayer.Character:FindFirstChild("Rage Ring").ActivatedRemote:FireServer(unpack(args))
+
+        end
+    end)
+end)
+
+tab2:NewButton("Ysmault Center",function(value)
+    basetp()
+end)
+
+tab2:NewButton("Odym Center",function(value)
+    local args = {
+        [1] = "Portal",
+        [2] = CFrame.new(Vector3.new(63.6749267578125, 455.67352294921875, -122.70170593261719), Vector3.new(-0.31782010197639465, -0.4197114408016205, 0.8501957058906555))
+    }
+
+    game:GetService("Players").LocalPlayer.Character:FindFirstChild("Rage Ring").ActivatedRemote:FireServer(unpack(args))
+end)
+
+tab2:NewButton("Qward Center",function(value)
+    local args = {
+        [1] = "Portal",
+        [2] = CFrame.new(Vector3.new(-62.96958923339844, 324.3237609863281, 194.9071044921875), Vector3.new(-0.13953356444835663, -0.7884191870689392, -0.5991039872169495))
+    }
+
+    game:GetService("Players").LocalPlayer.Character:FindFirstChild("Rage Ring").ActivatedRemote:FireServer(unpack(args))
+end)
+
+
+tab1:NewButton("Infinite Energy",function(value)
+    while true do
+        setPower()
+        wait(0.1)
+    end
+end)
+local notshielding = false
+tab3:NewToggle("Force Anti-Shields",false,function(value)
+    notshielding = s
+    if s then
+        local g = game:service('RunService').Stepped:connect(function()
+            if not notshielding then
+                return g:Disconnect()
+            end
+            pcall(function()
+                shieldoff()
+                wait(0.1)
+            end)
+        end)
+    end
+end)
+tab3:NewButton("([)Add Shields",function(value)
+    mouse.KeyDown:Connect(function(key)
+        if key == "[" then
+            shield()
+        end
+    end)
+end)
+
+tab3:NewButton("(})Remove Shields",function(value)
+    mouse.KeyDown:Connect(function(key)
+        if key == "]" then
+            shieldoff()
+        end
+    end)
+end)
