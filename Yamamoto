@@ -1,0 +1,163 @@
+local lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/Deedaoz/Bluecandy/main/New%20Text%20Document%20(2).lua"))();
+
+
+
+
+
+
+local tab1 = lib:NewTab("Main", "Stuff lmao") -- name <string> description <string>
+local tab2 = lib:NewTab("Speed", "Stuff lmao") -- name <string> description <string>
+
+local plr = game.Players.LocalPlayer
+	local mouse = plr:GetMouse()
+	local value = false
+
+	local function flameOn()
+		local args = {
+			[1] = true,
+			[2] = "Speedster"
+		}
+
+		game:GetService("ReplicatedStorage").Events.Flames:FireServer(unpack(args))
+
+	end
+	local function groundSmokeOn()
+		local args = {
+			[1] = true,
+			[2] = false
+		}
+
+		game:GetService("ReplicatedStorage").Events.toggleRunSmoke:FireServer(unpack(args))
+		local function groundSmokeOff()
+			local args = {
+				[1] = false
+			}
+
+			game:GetService("ReplicatedStorage").Events.toggleRunSmoke:FireServer(unpack(args))
+
+		end
+	end
+	local function runTrailOn()
+		local args = {
+			[1] = true
+		}
+
+		game:GetService("ReplicatedStorage").Events.runTrail:FireServer(unpack(args))
+	end
+	local function runTrailOff()
+		local args = {
+			[1] = false
+		}
+
+		game:GetService("ReplicatedStorage").Events.runTrail:FireServer(unpack(args))
+	end
+	local function flameOff()
+		local args = {
+			[1] = false
+		}
+
+		game:GetService("ReplicatedStorage").Events.Flames:FireServer(unpack(args))
+
+	end
+	local function sonicBoom()
+		local args = {
+			[1] = true
+		}
+
+		game:GetService("ReplicatedStorage").Events.sonicBoom:FireServer(unpack(args))
+
+	end
+	local supersonicbooming = false
+	local sonicbooming = false
+    
+    
+    
+    tab1:NewToggle("Supersonic Booming",false,function(value)
+
+supersonicbooming = s
+		if s then
+			local g = game:service('RunService').Stepped:connect(function()
+				if not supersonicbooming then
+					return g:Disconnect()
+				end
+				pcall(function()
+					sonicBoom()
+					wait(0.1)
+				end)
+			end)
+		end
+    end)
+
+
+
+
+    tab1:NewToggle("Sonic Booming",false,function(value)
+
+    sonicbooming = s
+		if s then
+			local g = game:service('RunService').Stepped:connect(function()
+				if not sonicbooming then
+					return g:Disconnect()
+				end
+				pcall(function()
+					sonicBoom()
+					wait(0.4)
+				end)
+			end)
+		end
+    end)
+
+    tab1:NewToggle("Run smoke",false,function(value)
+        runSmoking = s
+		if s then
+			local g = game:service('RunService').Stepped:connect(function()
+				if not runSmoking then
+					return g:Disconnect()
+				end
+				pcall(function()
+					groundSmokeOn()
+					wait(0.4)
+				end)
+			end)
+		end
+    end)
+
+    tab1:NewToggle("Non-Lightning trails",false,function(value)
+
+        runtrailing = s
+		if s then
+			local g = game:service('RunService').Stepped:connect(function()
+				if not runtrailing then
+					return g:Disconnect()
+				end
+				pcall(function()
+					runTrailOn()
+					wait(0.4)
+					runTrailOff()
+					wait(0.4)
+				end)
+			end)
+		end
+    end)
+
+    tab1:NewButton("Normal Flame",function()
+        flameOn()
+    end)
+
+    tab1:NewButton("Flame off",function()
+        flameOff()
+    end)
+    tab2:NewSlider("Speed",16,10000,16,function(value)
+        wsholder = walkspeed
+    end)
+
+    tab2:NewButton("Set Speed",function()
+        while true do
+			local player = game.Players.LocalPlayer.Character.Humanoid
+			player.WalkSpeed = wsholder
+			wait(0.1)
+		end
+    end)
+
+
+    
