@@ -1,11 +1,11 @@
---> Ui
-local library = loadstring(game:HttpGet("https://symmetricalhubofficial.000webhostapp.com/UwuWare.lua", true))()
+local lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/Deedaoz/Bluecandy/main/New%20Text%20Document%20(2).lua"))();
 
-getgenv().theme = Color3.fromRGB(100,149,237) --custom UI colors if you want
+lib:SetTitle("Tournament of Power") -- name <string>
 
-local tab3 = library:CreateWindow("Cosmetic")
-local tab2 = library:CreateWindow("Beams")
-local tab1 = library:CreateWindow("Combat")
+local tab1 = lib:NewTab("Cosmetic", "Looks lmao") -- name <string> description <string>
+local tab2 = lib:NewTab("Beams", "Random shit") -- name <string> description <string>
+local tab3 = lib:NewTab("Combat", "Effects cast on yourself!") -- name <string> description <string>
+
 local function pulse()
 	local args = {
 		[1] = "ChargingSB",
@@ -26,14 +26,7 @@ local function aura()
 
 end
 local mouse=game.Players.LocalPlayer:GetMouse()
-tab3:AddButton({text="(V) Aura Pulse",state=false,callback=function(s)
-	mouse.KeyDown:Connect(function(key)
-		if key == "v" then
-			aura()
-			pulse()
-		end
-	end)
-end,})
+
 local function attack()
 	local args = {
 		[1] = "Attack",
@@ -123,23 +116,46 @@ local args = {
 game:GetService("ReplicatedStorage").Remotes.Melee:FireServer(unpack(args))
 
 end
-tab1:AddButton({text="([) Super Punch",state=false,callback=function(s)
-mouse.KeyDown:connect(function(key)
-if key == "[" then
-attack()
-attack()
-attack()
-attack()
-attack()
-attack()
-attack()
-attack()
-attack()
-end
+
+
+
+
+
+
+tab1:NewButton("Super Punch",function()
+    
+
+    mouse.KeyDown:connect(function(key)
+        if key == "[" then
+        attack()
+        attack()
+        attack()
+        attack()
+        attack()
+        attack()
+        attack()
+        attack()
+        attack()
+        end
+        end)
+    end)
+        
+     
+tab3:NewButton("Aura Pulse",function()
+  
+    
+    mouse.KeyDown:Connect(function(key)
+		if key == "v" then
+			aura()
+			pulse()
+		end
+	end)
 end)
-end,})
-tab2:AddButton({text="(J/K) Charge/Fire",state=false,callback=function(s)
-	game:GetService("StarterGui"):SetCore("SendNotification",{
+
+tab2:NewButton("(J/K) Charge/Fire",function()
+    
+
+    game:GetService("StarterGui"):SetCore("SendNotification",{
 		Title = "How to Use:",
 		Text = "Press J to charge, K to shoot."
 	})
@@ -151,27 +167,31 @@ tab2:AddButton({text="(J/K) Charge/Fire",state=false,callback=function(s)
 			fire()
 		end
 	end)
-end,})
-tab2:AddButton({text="(L) Solar Beam",state=false,callback=function(s)
-	game:GetService("StarterGui"):SetCore("SendNotification",{
-		Title = "How to Use:",
-		Text = "Charge up beam and use L for a massive beam."
-	})
-	mouse.KeyDown:connect(function(key)
-	    if key == "l" then
-	        solar()
-	    end
-	end)
-end,})
-tab1:AddButton({text="(P) Dash Attack",state=false,callback=function(s)
-	mouse.KeyDown:Connect(function(key)
+end)
+
+tab2:NewButton("(L) Solar Beam",function()
+game:GetService("StarterGui"):SetCore("SendNotification",{
+    Title = "How to Use:",
+    Text = "Charge up beam and use L for a massive beam."
+})
+mouse.KeyDown:connect(function(key)
+    if key == "l" then
+        solar()
+    end
+end)
+end)
+
+  
+tab1:NewButton("(P) Dash Attack",function()
+    mouse.KeyDown:Connect(function(key)
 		if key == "p" then
 			launch()
 		end
 	end)
-end,})
-tab1:AddButton({text="(M) Ultra Lagstinct",state=false,callback=function(s)
-	mouse.KeyDown:Connect(function(key)
+end)   
+    
+tab1:NewButton("(M) Ultra Lagstinct",function()
+    mouse.KeyDown:Connect(function(key)
 		if key == "m" then
 			while true do
 				local args = {
@@ -189,9 +209,11 @@ tab1:AddButton({text="(M) Ultra Lagstinct",state=false,callback=function(s)
 			end
 		end
 	end)
-end,})
-tab1:AddButton({text="(N) Ki-Blast",state=false,callback=function(s)
-	game:GetService("StarterGui"):SetCore("SendNotification",{
+end)
+        
+tab1:NewButton("(N) Ki-Blast",function()
+
+    ame:GetService("StarterGui"):SetCore("SendNotification",{
 		Title = "How to Use:",
 		Text = "Press B to disable"
 	})
@@ -222,5 +244,4 @@ tab1:AddButton({text="(N) Ki-Blast",state=false,callback=function(s)
 			}
 		end
 	end)
-end,})
-library:Init()
+end)
