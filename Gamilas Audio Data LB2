@@ -496,10 +496,18 @@ tab5:NewButton("Underhit (F)",function()
     end)
 
     tab7:NewButton("Amogus Fling",function()
-         loadstring(game:HttpGet("https://raw.githubusercontent.com/SpaceBattleshipYamato/Gamilas-Anthem/main/Amogus"))();
+        local music3 = game:GetService("StarterGui").forcePowers.equip
+        music3:play()
+    
+        
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/SpaceBattleshipYamato/Gamilas-Anthem/main/Amogus"))();
     end)
     
     tab7:NewButton("Gus Fling",function()
+        local music3 = game:GetService("StarterGui").forcePowers.equip
+    music3:play()
+
+        
         loadstring(game:HttpGet("https://raw.githubusercontent.com/SpaceBattleshipYamato/Gamilas-Anthem/main/Gustavo%20Infringment"))();
 
     end)
@@ -511,6 +519,10 @@ tab5:NewButton("Underhit (F)",function()
     end)
 
     tab8:NewButton("Dex Explorer",function()
+        local music3 = game:GetService("StarterGui").forcePowers.equip
+    music3:play()
+
+        
         loadstring(game:HttpGet('https://raw.githubusercontent.com/SpaceBattleshipYamato/Gamilas-Anthem/main/Dexter'))()
     end)
 
