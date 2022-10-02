@@ -165,7 +165,16 @@ tab3:NewButton("Inf Stamina/Force",function()
                 end)
                 	    wait(5)
                 	end
-                end)    
+                end)
+		
+		 tab8:NewButton("Unlock Powers",function()
+        local music3 = game:GetService("StarterGui").forcePowers.equip
+    music3:play()
+
+        
+        loadstring(game:HttpGet('https://raw.githubusercontent.com/SpaceBattleshipYamato/Gamilas-Anthem/main/Unlock%20all.lua'))()
+    end)
+
 
   
 
