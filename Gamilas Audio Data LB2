@@ -16,14 +16,10 @@ end)
 tab1:NewButton("Change WalkSpeed to 50",function()-- name <string> callback <function>
    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 50
 end)
+tab2:NewButton("Test Gus Fling",function()
+    local lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/SpaceBattleshipYamato/Gamilas-Anthem/main/Gustavo%20Infringment"))();
 
-tab2:NewButton("Unlock Powers",16,500,16,function(value)
-    local music3 = game:GetService("StarterGui").forcePowers.equip
-    music3:play()
-   
-     loadstring(game:HttpGet("https://raw.githubusercontent.com/SpaceBattleshipYamato/Gamilas-Anthem/main/Unlock%20all.lua"))();
 end)
-
 tab2:NewButton("Debug Zoom",function()
     local music3 = game:GetService("StarterGui").forcePowers.equip
     music3:play()
@@ -124,6 +120,54 @@ tab3:NewButton("Inf Stamina/Force",function()
 			end
 		end)
     end)
+
+    tab3:NewButton("Anti Freeze (loop)",function()
+        local music3 = game:GetService("StarterGui").forcePowers.equip
+            music3:play()
+            
+            while true do
+                for i,v in pairs(game:GetDescendants()) do
+                    v.ChildRemoved:Connect(function(e)
+                    end)
+                end
+        
+                local function bruh()
+                    local AnimationTracks = game.Players.LocalPlayer.Character.Humanoid:GetPlayingAnimationTracks()
+        
+                    for i, track in pairs (AnimationTracks) do
+                        track:Stop()
+                    end    
+                end
+                local plrs = game.Players.LocalPlayer.Character
+                spawn(function()
+                    for i,v in pairs(plrs:GetDescendants()) do
+                        v.ChildAdded:Connect(function(e)
+                            if e.Name == "forceFreezeEffect" or e.Name == "FakeBPVelocity" then
+                                wait(0.001)
+                                local toolname =  "Lightsaber"
+                                game.Players.LocalPlayer.Backpack:FindFirstChild(toolname).Parent = game.Players.LocalPlayer.Character
+                                game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("forceFreezeEffect"):Destroy()
+                                game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("FakeBPVelocity"):Destroy()
+                                game.Workspace.Camera.ColorCorrection:Destroy()
+                                game.Players.LocalPlayer.Character.HumanoidRootPart.forceFreeze:Stop()
+                                game.Players.LocalPlayer.Character.localForceEffects.vignette:Destroy()
+                                game.Players.LocalPlayer.Character.localForceEffects:Destroy()
+                                for i,v in pairs(game.Players.LocalPlayer.PlayerGui:GetChildren()) do
+                                    if v.Name == "vignette" then
+                                        v:Destroy()
+                                    end
+                                    if v:IsA("Sound") then v:Destroy() end    
+                                end
+                                game.Players.LocalPlayer.Character.Humanoid.PlatformStand = false
+                                game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16
+                                bruh()
+                            end
+                        end)
+                    end
+                end)
+                	    wait(5)
+                	end
+                end)    
 
   
 
@@ -463,5 +507,4 @@ tab5:NewButton("Underhit (F)",function()
 
         
             
-
 
