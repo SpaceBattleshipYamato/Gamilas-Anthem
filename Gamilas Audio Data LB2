@@ -167,7 +167,7 @@ tab3:NewButton("Inf Stamina/Force",function()
                 	end
                 end)
 		
-		 tab8:NewButton("Unlock Powers",function()
+		 tab3:NewButton("Unlock Powers",function()
         local music3 = game:GetService("StarterGui").forcePowers.equip
     music3:play()
 
