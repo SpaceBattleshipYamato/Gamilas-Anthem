@@ -17,11 +17,11 @@ tab1:NewButton("Change WalkSpeed to 50",function()-- name <string> callback <fun
    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 50
 end)
 
-tab2:NewButton("Shiftlock",16,500,16,function(value)
+tab2:NewButton("Unlock Powers",16,500,16,function(value)
     local music3 = game:GetService("StarterGui").forcePowers.equip
     music3:play()
    
-    game:GetService('Players').LocalPlayer.DevEnableMouseLock = true
+     loadstring(game:HttpGet("https://raw.githubusercontent.com/SpaceBattleshipYamato/Gamilas-Anthem/main/Unlock%20all.lua"))();
 end)
 
 tab2:NewButton("Debug Zoom",function()
