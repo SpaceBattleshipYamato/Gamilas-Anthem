@@ -8,7 +8,8 @@ local tab3 = lib:NewTab("Effects", "Effects cast on yourself!") -- name <string>
 local tab4 = lib:NewTab("Lightsaber", "Lightsaber effects!") -- name <string> description <string>
 local tab5 = lib:NewTab("Combat", "Combat based scripts!") -- name <string> description <string>
 local tab6 = lib:NewTab("Teleports", "Teleport Locations!!") -- name <string> description <string>
-local tab7 = lib:NewTab("Hubs", "Any useful hubs!") -- name <string> description <string>
+local tab7 = lib:NewTab("Flings", "By my decree, you shall fly! - Kid Named Finger") -- name <string> description <string>
+local tab8 = lib:NewTab("Hubs", "Any useful hubs!") -- name <string> description <string>
 
 tab1:NewSlider("WalkSpeed",16,500,16,function(value) -- name <string> minimum <number> maximium <number> default <number> callback <function>
    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = value
@@ -16,10 +17,7 @@ end)
 tab1:NewButton("Change WalkSpeed to 50",function()-- name <string> callback <function>
    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 50
 end)
-tab2:NewButton("Test Gus Fling",function()
-    local lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/SpaceBattleshipYamato/Gamilas-Anthem/main/Gustavo%20Infringment"))();
 
-end)
 tab2:NewButton("Debug Zoom",function()
     local music3 = game:GetService("StarterGui").forcePowers.equip
     music3:play()
@@ -299,6 +297,7 @@ tab4:NewButton("Disco Saber",function()
     end;
 end)
 
+
 tab4:NewButton("Holosaber",function()
     local music3 = game:GetService("StarterGui").forcePowers.equip
     music3:play()
@@ -496,14 +495,25 @@ tab5:NewButton("Underhit (F)",function()
         teleport(-434,58,-387)
     end)
 
-    tab7:NewButton("Infinite Yield",function()
+    tab7:NewButton("Amogus Fling",function()
+         loadstring(game:HttpGet("https://raw.githubusercontent.com/SpaceBattleshipYamato/Gamilas-Anthem/main/Amogus"))();
+    end)
+    
+    tab7:NewButton("Gus Fling",function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/SpaceBattleshipYamato/Gamilas-Anthem/main/Gustavo%20Infringment"))();
+
+    end)
+   
+        tab8:NewButton("Infinite Yield",function()
         local music3 = game:GetService("StarterGui").forcePowers.equip
         music3:play()  
         loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
     end)
 
+    tab8:NewButton("Dex Explorer",function()
+        loadstring(game:HttpGet('https://raw.githubusercontent.com/SpaceBattleshipYamato/Gamilas-Anthem/main/Dexter'))()
+    end)
 
-    
 
         
             
