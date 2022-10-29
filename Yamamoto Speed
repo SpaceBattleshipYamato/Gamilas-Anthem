@@ -1,7 +1,7 @@
 local lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/Deedaoz/Bluecandy/main/New%20Text%20Document%20(2).lua"))();
 
 
-
+lib:SetTitle("Hybrid Flash") -- name <string>
 
 
 
