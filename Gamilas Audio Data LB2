@@ -8,7 +8,7 @@ local tab3 = lib:NewTab("Effects", "Effects cast on yourself!") -- name <string>
 local tab4 = lib:NewTab("Lightsaber", "Lightsaber effects!") -- name <string> description <string>
 local tab5 = lib:NewTab("Combat", "Combat based scripts!") -- name <string> description <string>
 local tab6 = lib:NewTab("Teleports", "Teleport Locations!!") -- name <string> description <string>
-local tab7 = lib:NewTab("Flings", "By my decree, you shall fly! - Kid Named Finger") -- name <string> description <string>
+local tab7 = lib:NewTab("Flings", "By my decree, you shall fly! - Lalo Salamanca") -- name <string> description <string>
 local tab8 = lib:NewTab("Hubs", "Any useful hubs!") -- name <string> description <string>
 
 tab1:NewSlider("WalkSpeed",16,500,16,function(value) -- name <string> minimum <number> maximium <number> default <number> callback <function>
