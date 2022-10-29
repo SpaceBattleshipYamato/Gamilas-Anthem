@@ -1,5 +1,6 @@
 local lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/Deedaoz/Bluecandy/main/New%20Text%20Document%20(2).lua"))();
 
+lib:SetTitle("AOH") -- name <string>
 
 local tab1 = lib:NewTab("Experimental", "Nothing here!?!?!?") -- name <string> description <string>
 local tab2 = lib:NewTab("Main", "Main stuff") -- name <string> description <string>
